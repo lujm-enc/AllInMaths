@@ -1,0 +1,26 @@
+% custom_commands.tex
+% Các lệnh tự định nghĩa
+
+% Định nghĩa môi trường định lý
+\newtheorem{dinhly}{Định lý}[chapter]
+\newtheorem{dinhnghia}{Định nghĩa}[chapter]
+\newtheorem{vidu}{Ví dụ}[chapter]
+\newtheorem{baitap}{Bài tập}[chapter]
+
+% Một số lệnh toán học nhanh
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+% Modern box environments for theory, definition, example
+\newenvironment{lythuyet}[1][]
+  {\begin{theorybox}[title={#1}]}
+  {\end{theorybox}}
+\newenvironment{dinhnghiaBox}[1][]
+  {\begin{definitionbox}[title={#1}]}
+  {\end{definitionbox}}
+\newenvironment{viduBox}[1][]
+  {\begin{examplebox}[title={#1}]}
+  {\end{examplebox}}

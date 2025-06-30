@@ -1,0 +1,65 @@
+% main.tex
+% Sách Toán Học Chuyên Nghiệp
+\documentclass[12pt,a4paper]{book}
+
+% Gói cấu hình riêng
+\input{preamble/packages}
+\input{preamble/style}
+\input{preamble/custom_commands}
+
+% Thiết lập ngôn ngữ
+\setdefaultlanguage{vietnamese}
+
+% Thông tin sách (optional - không sử dụng \maketitle nữa)
+\title{SÁCH TOÁN HỌC CHUYÊN NGHIỆP}
+\author{Tác giả: Tên của bạn}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+
+% Custom title page with logo
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    % Logo
+    \includegraphics[width=0.25\textwidth]{images/logo.png}
+    
+    \vspace{2cm}
+    
+    % Title
+    {\Huge\bfseries SÁCH TOÁN HỌC CHUYÊN NGHIỆP\par}
+    
+    \vspace{1.5cm}
+    
+    % Author
+    {\Large Tác giả: Tên của bạn\par}
+    
+    \vspace{1cm}
+    
+    % Date
+    {\large \today\par}
+    
+    \vfill
+    
+    % Optional: Additional information at bottom
+    % {\small Nhà xuất bản\par}
+    % {\small Thành phố - Năm xuất bản\par}
+\end{titlepage}
+
+% Table of contents
+\tableofcontents
+
+\mainmatter
+% Chèn các chương
+\include{chapters/chapter1}
+% \include{chapters/chapter2}
+% ...
+
+\backmatter
+% \bibliographystyle{plain}
+% \bibliography{bibliography}
+
+\end{document}

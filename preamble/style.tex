@@ -1,0 +1,47 @@
+% style.tex
+% Định dạng hiện đại, đẹp mắt
+
+% Tiêu đề chương
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\huge\bfseries\color{blue}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Tiêu đề mục
+\titleformat{\section}
+  {\normalfont\sffamily\Large\bfseries\color{teal}}
+  {\thesection}{1em}{}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\leftmark}
+\fancyhead[R]{\thepage}
+
+% Định dạng mục lục hiện đại, đẹp mắt
+% Sửa lỗi hiển thị mục lục chương
+\titlecontents{chapter}
+  [0pt]{\sffamily\bfseries}
+  {\thecontentslabel\quad}
+  {}
+  {\hfill\contentspage}
+  [\vspace{0.5em}]
+
+% Modern, minimalistic box styles and font
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\definecolor{theorybg}{HTML}{F5F7FA}
+\definecolor{theoryborder}{HTML}{007ACC}
+\definecolor{examplebg}{HTML}{F9F6F2}
+\definecolor{exampleborder}{HTML}{009688}
+\definecolor{definitionbg}{HTML}{F5F7FA}
+\definecolor{definitionborder}{HTML}{FF9800}
+
+% Modern sans-serif font (XeLaTeX/LuaLaTeX recommended)
+\usepackage{fontspec}
+\setmainfont{Arial}
+\setsansfont{Arial}
+
+% Minimalistic tcolorbox styles
+\newtcolorbox{theorybox}{colback=theorybg, colframe=theoryborder, boxrule=1pt, arc=4pt, left=1em, right=1em, top=0.5em, bottom=0.5em, fonttitle=\bfseries, title=\textsf{Lý thuyết}, enhanced, sharp corners=south}
+\newtcolorbox{definitionbox}{colback=definitionbg, colframe=definitionborder, boxrule=1pt, arc=4pt, left=1em, right=1em, top=0.5em, bottom=0.5em, fonttitle=\bfseries, title=\textsf{Định nghĩa}, enhanced, sharp corners=south}
+\newtcolorbox{examplebox}{colback=examplebg, colframe=exampleborder, boxrule=1pt, arc=4pt, left=1em, right=1em, top=0.5em, bottom=0.5em, fonttitle=\bfseries, title=\textsf{Ví dụ}, enhanced, sharp corners=south}
