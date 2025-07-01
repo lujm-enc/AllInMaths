@@ -1,16 +1,16 @@
 % main.tex
 % Sách Toán Học Chuyên Nghiệp
-\documentclass[12pt,a4paper]{book}
+\documentclass[12pt,a4paper,twoside]{book} % Use twoside for professional book layout
 
 % Gói cấu hình riêng
 \input{preamble/packages}
-\input{preamble/style}
 \input{preamble/custom_commands}
+\input{preamble/style}
 
 % Thiết lập ngôn ngữ
 \setdefaultlanguage{vietnamese}
 
-% Thông tin sách (optional - không sử dụng \maketitle nữa)
+% Thông tin sách (không dùng \maketitle)
 \title{SÁCH TOÁN HỌC CHUYÊN NGHIỆP}
 \author{Tác giả: Tên của bạn}
 \date{\today}
@@ -19,38 +19,41 @@
 
 \frontmatter
 
-% Custom title page with logo
+% Custom title page with a more balanced layout
 \begin{titlepage}
     \centering
-    \vspace*{2cm}
+    \vspace*{1cm}
     
-    % Logo
-    \includegraphics[width=0.25\textwidth]{images/logo.png}
-    
-    \vspace{2cm}
-    
-    % Title
-    {\Huge\bfseries SÁCH TOÁN HỌC CHUYÊN NGHIỆP\par}
-    
-    \vspace{1.5cm}
-    
-    % Author
-    {\Large Tác giả: Tên của bạn\par}
-    
-    \vspace{1cm}
-    
-    % Date
-    {\large \today\par}
+    \includegraphics[width=0.2\textwidth]{images/logo.png}
     
     \vfill
     
-    % Optional: Additional information at bottom
-    % {\small Nhà xuất bản\par}
-    % {\small Thành phố - Năm xuất bản\par}
+    \parbox{0.8\textwidth}{
+        \centering
+        \sffamily % Use sans-serif for title
+        {\Huge\bfseries SÁCH TOÁN HỌC CHUYÊN NGHIỆP\par}
+        \vspace{2cm}
+        {\Large Tác giả: Tên của bạn\par}
+        \vspace{1.5cm}
+        {\large \today\par}
+    }
+    
+    \vfill
+    \vfill
+    
+    {\sffamily Nhà xuất bản XYZ\par}
+    {\sffamily Hà Nội --- 2024\par}
 \end{titlepage}
 
-% Table of contents
 \tableofcontents
+
+% --- AUTOMATION EXAMPLE ---
+% Automatically create a list of all definitions in the book
+\tcblistof[\chapter*]{dinhnghia}{Danh mục Định nghĩa}
+
+% Automatically create a list of all theorems in the book
+\tcblistof[\chapter*]{dinhly}{Danh mục Định lý}
+
 
 \mainmatter
 % Chèn các chương

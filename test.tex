@@ -1,0 +1,32 @@
+% diagnose.tex
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{tcolorbox}
+
+% --- SETUP IDENTICAL TO YOUR PROJECT ---
+\setsansfont{Inter}
+% \\usepackage{fontawesome5}
+% --- END SETUP ---
+
+% This is the key test. A command to force the font switch.
+% \newcommand{\manualicon}[1]{{\fontspec{Font Awesome 5 Free Solid}#1}}
+
+\begin{document}
+
+\section*{Test 3: Manual Font Switch}
+Does a manual switch to \verb|"Font Awesome 5 Free Solid"| work? \\
+Result: {\sffamily }
+
+\hrulefill
+
+\section*{Test 4: The Full tcolorbox}
+This is the final test, combining everything.
+
+\begin{tcolorbox}[
+    fonttitle=\sffamily\bfseries,
+    title={This is the title}
+  ]
+  This is the box content.
+\end{tcolorbox}
+
+\end{document}

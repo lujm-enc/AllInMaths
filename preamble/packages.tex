@@ -1,30 +1,33 @@
 % packages.tex
 % Gói lệnh sử dụng chung cho sách
 
-% Font và ngôn ngữ
-\usepackage{fontspec}
-\usepackage{polyglossia}
-\setmainlanguage{vietnamese}
-\setotherlanguage{english}
-\setmainfont{Times New Roman}
+% ---- Core and Language ----
+\usepackage{fontspec}      % For loading modern fonts (requires XeLaTeX/LuaTeX)
+\usepackage{polyglossia}   % Modern multilingual support
 
-% Toán học
-\usepackage{amsmath, amssymb, amsthm}
+% ---- Mathematics ----
+\usepackage{amsmath}
+\usepackage{amssymb}
+% amsthm is no longer needed, as tcolorbox will handle theorem environments
 
-% Hình ảnh, màu sắc
+% ---- Graphics, Layout, and Color ----
 \usepackage{graphicx}
-\usepackage{xcolor}
-
-% Bố cục trang
-\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[a4paper, margin=2.5cm, headheight=15pt]{geometry} % Adjusted headheight for fancyhdr
 \usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{fontawesome5}  % For icons (with XeLaTeX compatibility)
 
-% Định dạng mục lục, tiêu đề
+% ---- Advanced Boxes and Theorems ----
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}    % Essential for \newtcbtheorem
+\tcbuselibrary{skins}       % For advanced styling like 'enhanced'
+\tcbuselibrary{breakable}   % Allows boxes to break across pages
+\usepackage{xparse}         % For creating advanced commands/environments
+
+% ---- Headings and Table of Contents ----
 \usepackage{titlesec}
 \usepackage{titletoc}
 
-% Liệt kê đẹp
-\usepackage{enumitem}
-
-% Hyperlink
-\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+% ---- Utilities ----
+\usepackage{enumitem}      % For better lists
+\usepackage[colorlinks=true, allcolors=myblue]{hyperref} % Using our custom color

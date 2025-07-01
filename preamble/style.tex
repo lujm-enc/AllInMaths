@@ -1,47 +1,205 @@
 % style.tex
 % Định dạng hiện đại, đẹp mắt
 
-% Tiêu đề chương
-\titleformat{\chapter}[display]
-  {\normalfont\sffamily\huge\bfseries\color{blue}}
-  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+% ---- 1. Color Palette ----
+% A professional, modern color scheme. Easy to change here.
+\definecolor{myblue}{HTML}{005EA2}      % A deep, professional blue
+\definecolor{mygreen}{HTML}{008060}     % A calm, academic green
+\definecolor{myorange}{HTML}{F47738}    % A soft, warning orange
+\definecolor{mypurple}{HTML}{6F77B2}    % A gentle purple
+\definecolor{myred}{HTML}{D4351C}       % A clear red for warnings/notes
+\definecolor{mygray}{HTML}{F3F2F1}      % A very light gray for box backgrounds
+\definecolor{darkgray}{HTML}{505A5F}    % For text
 
-% Tiêu đề mục
+% ---- 2. Typography ----
+% Ensure you have installed "Source Serif 4" and "Inter" fonts
+\setmainfont{Source Serif 4}[      % <<< THIS LINE IS UPDATED
+    UprightFont = *,
+    BoldFont = * SemiBold,
+    ItalicFont = * Italic,
+    BoldItalicFont = * SemiBold Italic
+]
+\setsansfont{Inter}[
+    UprightFont = * Regular,
+    BoldFont = * Bold,
+    ItalicFont = * Italic,
+    BoldItalicFont = * Bold Italic
+]
+% \setmonofont{Fira Code} % Optional: A great font for code listings
+
+% Set default text color
+\color{darkgray}
+
+% ---- 3. Page Layout (Headers & Footers) ----
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[LE,RO]{\sffamily\bfseries\thepage}
+\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}
+\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{ % For chapter start pages
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% ---- 4. Chapter and Section Titles ----
+\titleformat{\chapter}[display]
+  {\sffamily\huge\bfseries\color{myblue}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt} % Adjust spacing around chapter title
+
 \titleformat{\section}
-  {\normalfont\sffamily\Large\bfseries\color{teal}}
+  {\sffamily\Large\bfseries\color{myblue!80!black}}
   {\thesection}{1em}{}
 
-% Header/Footer
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\sffamily\leftmark}
-\fancyhead[R]{\thepage}
-
-% Định dạng mục lục hiện đại, đẹp mắt
-% Sửa lỗi hiển thị mục lục chương
-\titlecontents{chapter}
-  [0pt]{\sffamily\bfseries}
-  {\thecontentslabel\quad}
+% ---- 5. Table of Contents ----
+\titlecontents{chapter}[1.5em]
+  {\sffamily\bfseries\large\vspace{10pt}}
+  {Chương \thecontentslabel:\quad}
   {}
-  {\hfill\contentspage}
-  [\vspace{0.5em}]
+  {\sffamily\bfseries\hfill\contentspage}
 
-% Modern, minimalistic box styles and font
-\usepackage[most]{tcolorbox}
-\usepackage{xcolor}
-\definecolor{theorybg}{HTML}{F5F7FA}
-\definecolor{theoryborder}{HTML}{007ACC}
-\definecolor{examplebg}{HTML}{F9F6F2}
-\definecolor{exampleborder}{HTML}{009688}
-\definecolor{definitionbg}{HTML}{F5F7FA}
-\definecolor{definitionborder}{HTML}{FF9800}
+\titlecontents{section}[3.8em]
+  {\sffamily\small}
+  {\thecontentslabel.\quad}
+  {}
+  {\sffamily\hfill\contentspage}
 
-% Modern sans-serif font (XeLaTeX/LuaLaTeX recommended)
-\usepackage{fontspec}
-\setmainfont{Arial}
-\setsansfont{Arial}
+% ---- 6. Modern Environments: A Definitive and Stable Architecture ----
 
-% Minimalistic tcolorbox styles
-\newtcolorbox{theorybox}{colback=theorybg, colframe=theoryborder, boxrule=1pt, arc=4pt, left=1em, right=1em, top=0.5em, bottom=0.5em, fonttitle=\bfseries, title=\textsf{Lý thuyết}, enhanced, sharp corners=south}
-\newtcolorbox{definitionbox}{colback=definitionbg, colframe=definitionborder, boxrule=1pt, arc=4pt, left=1em, right=1em, top=0.5em, bottom=0.5em, fonttitle=\bfseries, title=\textsf{Định nghĩa}, enhanced, sharp corners=south}
-\newtcolorbox{examplebox}{colback=examplebg, colframe=exampleborder, boxrule=1pt, arc=4pt, left=1em, right=1em, top=0.5em, bottom=0.5em, fonttitle=\bfseries, title=\textsf{Ví dụ}, enhanced, sharp corners=south}
+% --- PART 1: The Master "Theory" Box ---
+% A large, breakable half-box for theoretical content.
+\newtcolorbox{lythuyetbox}[1]{
+    breakable,
+    enhanced,
+    frame empty,
+    colback=white,
+    fonttitle=\sffamily\bfseries\Large,
+    coltitle=myblue, % <<< THE FIX: Explicitly sets the title's text color.
+    % The "half-box" border
+    borderline north={1.5pt}{0pt}{myblue},
+    borderline west={1.5pt}{0pt}{myblue},
+    % Title placement and styling
+    attach boxed title to top left={
+        xshift=1cm,
+        yshift=-0.5\baselineskip, % Centers the title on the top line
+    },
+    boxed title style={
+        frame empty,
+        colback=white, % Makes the title block opaque to hide the line behind it
+    },
+    title=#1,
+    % Spacing for the content inside
+    left=6mm, top=8mm, bottom=4mm, right=4mm,
+}
+
+
+% --- PART 2: DEFINITIVE, STABLE ENVIRONMENTS ---
+% This is the final, correct solution. It uses the "titlerule=0pt" key to
+% reliably remove the dividing line, achieving the integrated title design.
+
+% --- Environment Definitions ---
+
+\newtcbtheorem[auto counter, number within=chapter]{dinhnghia}{Định nghĩa}
+  {
+    enhanced, frame empty, sharp corners,
+    % Make the title and content backgrounds the same color
+    colback=myorange!10!white,
+    colbacktitle=myorange!10!white,
+    % Style the title text
+    coltitle=myorange!35!black, fonttitle=\sffamily\bfseries,
+    % CORRECT, STABLE KEY: Sets the thickness of the rule under the title to zero.
+    titlerule=0pt,
+    % Standard options for layout
+    boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
+    title={\icon{book}\hspace{0.5em}Định nghĩa~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
+  }
+  {}
+
+\newtcbtheorem[auto counter, number within=chapter]{dinhly}{Định lý}
+  {
+    enhanced, frame empty, sharp corners,
+    colback=myblue!10!white, colbacktitle=myblue!10!white,
+    coltitle=myblue!35!black, fonttitle=\sffamily\bfseries,
+    titlerule=0pt,
+    boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
+    title={\icon{landmark}\hspace{0.5em}Định lý~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
+  }
+  {}
+
+\newtcbtheorem[auto counter, number within=chapter]{vidu}{Ví dụ}
+  {
+    enhanced, frame empty, sharp corners,
+    colback=mygreen!10!white, colbacktitle=mygreen!10!white,
+    coltitle=mygreen!35!black, fonttitle=\sffamily\bfseries,
+    titlerule=0pt,
+    boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
+    title={\icon{pencil-alt}\hspace{0.5em}Ví dụ~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
+  }
+  {}
+
+\newtcbtheorem[auto counter, number within=chapter]{hequa}{Hệ quả}
+  {
+    enhanced, frame empty, sharp corners,
+    colback=mypurple!10!white, colbacktitle=mypurple!10!white,
+    coltitle=mypurple!35!black, fonttitle=\sffamily\bfseries,
+    titlerule=0pt,
+    boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
+    title={\icon{star}\hspace{0.5em}Hệ quả~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
+  }
+  {}
+
+\newtcbtheorem[auto counter, number within=chapter]{chuy}{Chú ý}
+  {
+    enhanced, frame empty, sharp corners,
+    colback=myred!15!white, colbacktitle=myred!15!white,
+    coltitle=myred!40!black, fonttitle=\sffamily\bfseries,
+    titlerule=0pt,
+    boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
+    title={\icon{exclamation-triangle}\hspace{0.5em}Chú ý~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
+  }
+  {}
+
+
+% --- PART 3: The Exercise and Solution System (Modern & Simplistic) ---
+% This new design focuses on minimalism and readability.
+
+% Define a counter for the exercises, which resets every chapter.
+\newcounter{cauhoicounter}[chapter]
+\renewcommand{\thecauhoicounter}{\thechapter.\arabic{cauhoicounter}}
+
+% \NewDocumentEnvironment requires the xparse package (already loaded in packages.tex)
+% This new 'cauhoi' environment has an optional title and a mandatory label.
+% Usage: \begin{cauhoi}[Optional Title]{label-name} ... \end{cauhoi}
+\NewDocumentEnvironment{cauhoi}{ o m }{% o = Optional arg [in brackets], m = Mandatory arg {in braces}
+    \refstepcounter{cauhoicounter}\label{#2}% Step and set the label for \ref
+    \begin{tcolorbox}[
+        enhanced, colback=white, colframe=darkgray, boxrule=0.5pt, sharp corners
+    ]
+    \sffamily\bfseries\color{darkgray}% Styling for the title line
+    Bài tập~\thecauhoicounter
+    \IfValueT{#1}{% If the optional title #1 was provided, print it with a colon
+        : #1%
+    }%
+    \par\nobreak\vspace{1.5mm}% Line break after the title line
+    \normalfont\color{darkgray} % Reset font for the main question text
+}{
+    \end{tcolorbox}
+}
+
+% This new 'loigiai' environment is a simple, borderless block.
+\NewDocumentEnvironment{loigiai}{}{% No arguments needed
+    \begin{tcolorbox}[
+        enhanced, frame empty, % No border
+        colback=mygray,      % Light gray background
+        sharp corners,
+        top=8pt, bottom=8pt, left=8pt, right=8pt % Padding
+    ]
+    \sffamily\bfseries\color{mygreen!30!black}% Styling for "Lời giải"
+    Lời giải
+    \par\nobreak\vspace{1.5mm}% Line break
+    \normalfont\color{darkgray}% Reset font for the solution text
+}{
+    \end{tcolorbox}
+}
