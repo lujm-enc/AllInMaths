@@ -12,6 +12,8 @@
 *.nav
 *.snm
 *.vrb
+*.dinhly
+*.dinhnghia
 
 # Build directory
 build/

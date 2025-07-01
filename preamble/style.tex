@@ -10,6 +10,7 @@
 \definecolor{myred}{HTML}{D4351C}       % A clear red for warnings/notes
 \definecolor{mygray}{HTML}{F3F2F1}      % A very light gray for box backgrounds
 \definecolor{darkgray}{HTML}{505A5F}    % For text
+\definecolor{bodytextgray}{HTML}{333333} % A dark, readable gray
 
 % ---- 2. Typography ----
 % Ensure you have installed "Source Serif 4" and "Inter" fonts
@@ -28,7 +29,8 @@
 % \setmonofont{Fira Code} % Optional: A great font for code listings
 
 % Set default text color
-\color{darkgray}
+% \color{darkgray}
+\color{bodytextgray}
 
 % ---- 3. Page Layout (Headers & Footers) ----
 \pagestyle{fancy}
@@ -92,15 +94,13 @@
     enhanced,
     frame empty,
     colback=white,
-    fonttitle=\sffamily\bfseries\Large,
-    coltitle=myblue, % <<< THE FIX: Explicitly sets the title's text color.
-    % The "half-box" border
+    fonttitle=\sffamily\bfseries\large, % Slightly bigger title
+    coltitle=myblue,
     borderline north={1.5pt}{0pt}{myblue},
     borderline west={1.5pt}{0pt}{myblue},
-    % Title placement and styling
     attach boxed title to top left={
-        xshift=1cm,
-        yshift=-0.5\baselineskip, % Centers the title on the top line
+        xshift=0.5cm, % Tighter alignment
+        yshift=-0.7\baselineskip, % Slightly higher for better alignment
     },
     boxed title style={
         frame empty,
@@ -188,7 +188,7 @@
 
 % \NewDocumentEnvironment requires the xparse package (already loaded in packages.tex)
 % This new 'cauhoi' environment has an optional title and a mandatory label.
-% Usage: \begin{cauhoi}[Optional Title]{label-name} ... \end{cauhoi}
+% Usage: \begin{cauhoi[Optional Title]{label-name} ... \end{cauhoi}
 \NewDocumentEnvironment{cauhoi}{ o m }{% o = Optional arg [in brackets], m = Mandatory arg {in braces}
     \refstepcounter{cauhoicounter}\label{#2}% Step and set the label for \ref
     \begin{tcolorbox}[
@@ -200,7 +200,7 @@
         : #1%
     }%
     \par\nobreak\vspace{1.5mm}% Line break after the title line
-    \normalfont\color{darkgray} % Reset font for the main question text
+    \normalfont\color{bodytextgray} % Reset font for the main question text
 }{
     \end{tcolorbox}
 }
@@ -216,7 +216,7 @@
     \sffamily\bfseries\color{mygreen!30!black}% Styling for "Lời giải"
     Lời giải
     \par\nobreak\vspace{1.5mm}% Line break
-    \normalfont\color{darkgray}% Reset font for the solution text
+    \normalfont\color{bodytextgray}% Reset font for the solution text
 }{
     \end{tcolorbox}
 }
