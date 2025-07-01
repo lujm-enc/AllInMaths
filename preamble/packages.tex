@@ -8,21 +8,23 @@
 % ---- Mathematics ----
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
 % amsthm is no longer needed, as tcolorbox will handle theorem environments
+\usepackage{tkz-tab}       % <<< ADDED: For variation tables
 
 % ---- Graphics, Layout, and Color ----
 \usepackage{graphicx}
 \usepackage[a4paper, margin=2.5cm, headheight=15pt]{geometry} % Adjusted headheight for fancyhdr
 \usepackage{fancyhdr}
 \usepackage{xcolor}
-\usepackage{fontawesome5}  % For icons (with XeLaTeX compatibility)
+% \usepackage{fontawesome5}  % For icons (with XeLaTeX compatibility)
 
 % ---- Advanced Boxes and Theorems ----
 \usepackage[most]{tcolorbox}
-\tcbuselibrary{theorems}    % Essential for \newtcbtheorem
-\tcbuselibrary{skins}       % For advanced styling like 'enhanced'
-\tcbuselibrary{breakable}   % Allows boxes to break across pages
-\usepackage{xparse}         % For creating advanced commands/environments
+\tcbuselibrary{theorems} % Essential for \newtcbtheorem
+\tcbuselibrary{skins}    % For advanced styling like 'enhanced'
+% \tcbuselibrary{shadows}  % For shadow effects (disabled for compatibility)
 
 % ---- Headings and Table of Contents ----
 \usepackage{titlesec}
