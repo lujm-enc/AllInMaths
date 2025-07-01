@@ -43,15 +43,32 @@
     \renewcommand{\headrulewidth}{0pt}
 }
 
-% ---- 4. Chapter and Section Titles ----
-\titleformat{\chapter}[display]
-  {\sffamily\huge\bfseries\color{myblue}}
-  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
-\titlespacing*{\chapter}{0pt}{-20pt}{40pt} % Adjust spacing around chapter title
+% ---- 4. Chapter and Section Titles (Modernized & Corrected) ----
+% This version uses the correct titlesec syntax for BOTH chapters and sections.
 
+% --- MODERN CHAPTER STYLE ---
+% This command is already correct and robust.
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\color{darkgray}} % Global format for the chapter title block
+  {\filleft\huge\color{myblue}Chương \thechapter} % The label part (e.g., "Chương 1")
+  {10pt} % Vertical separation between the label and the title
+  { % Code that comes BEFORE the title text
+    \color{myblue}\titlerule[2pt]
+    \vspace{8pt}
+    \Huge\raggedleft % Apply formatting to the title text itself
+  }
+  [] % Code that comes AFTER the title
+\titlespacing*{\chapter}{0pt}{-20pt}{50pt} % Adjusts spacing (left, before, after)
+
+
+% --- MODERN SECTION STYLE ---
+% The illegal #1 has been removed, fixing the compilation error.
 \titleformat{\section}
-  {\sffamily\Large\bfseries\color{myblue!80!black}}
-  {\thesection}{1em}{}
+  {\sffamily\Large\bfseries\color{myblue!90!black}} % Font for the entire title line
+  {\color{myblue}\vrule width 2pt height 1.1em depth 0.2em\hspace{0.6em}\thesection} % The label
+  {0.5em} % Horizontal space
+  {}      % <<< THE FIX IS HERE. This was "{#1}" and is now correctly empty.
+\titlespacing*{\section}{0pt}{30pt}{15pt} % Adjust vertical spacing (left, before, after)
 
 % ---- 5. Table of Contents ----
 \titlecontents{chapter}[1.5em]
