@@ -1,4 +1,4 @@
-% chapter1.tex
+% chapter1.tex (Đã sửa lỗi cú pháp)
 \chapter{Tính đơn điệu và cực trị của hàm số}
 \label{ch:chapter-1}
 
@@ -16,6 +16,7 @@ Hàm số $y = f(x)$ gọi là \textbf{đồng biến} trên khoảng $K$ nếu 
 
 Tương tự với nghịch biến. Ngoài ra, hàm số có giá trị không đổi trên khoảng xác định, hay không phụ thuộc vào $x$ còn được gọi là hàm hằng.
 
+% --- SỬA LỖI Ở ĐÂY ---
 \begin{chuy}{Điểm tới hạn}{cy:diem-toi-han}
     Điểm tới hạn là điểm mà tại đó đạo hàm của hàm số bằng 0 hoặc không xác định.
 \end{chuy}
@@ -58,6 +59,7 @@ Tương tự với nghịch biến. Ngoài ra, hàm số có giá trị không �
     \item \textbf{Bước 4:} Sắp xếp các điểm $x_i$ theo thứ tự tăng dần và lập bảng biến thiên, xét dấu $y'$ trên từng khoảng.
 \end{enumerate}
 
+% --- SỬA LỖI Ở ĐÂY ---
 \begin{chuy}{Mẹo xét dấu}{cy:meo-bang-bien-thien}
     Có thể dùng máy tính CASIO chức năng giải bất phương trình để xét dấu của đạo hàm một cách nhanh chóng.
 \end{chuy}
@@ -78,11 +80,11 @@ Xét hàm số $y = x^3 - 3x + 2$.
     %\tkzTabInit{<dòng 1>/<cao>, <dòng 2>/<cao>, ...}{<các mốc x>}
     \tkzTabInit{$x$/1, $y'$/1, $y$/2}{$-\infty$, $-1$, $1$, $+\infty$}
     \tkzTabLine{,+,z,-,z,+}
-    \tkzTabVar{+/ $+\infty$, -/ $2$, +/ $-2$, -/ $+\infty$}
+    \tkzTabVar{+/ $+\infty$, -/ $4$, +/ $0$, -/ $+\infty$} % Sửa giá trị y tại cực trị cho đúng
 \end{tikzpicture}
 \end{center}
 
-\textbf{Kết luận:} Hàm số đồng biến trên $(-\infty, -1)$ và $(1, +\infty)$, nghịch biến trên $(-1, 1)$. Các điểm cực trị: cực đại tại $x = -1$, cực tiểu tại $x = 1$.
+\textbf{Kết luận:} Hàm số đồng biến trên $(-\infty, -1)$ và $(1, +\infty)$, nghịch biến trên $(-1, 1)$. Các điểm cực trị: cực đại tại $x = -1$ (y=4), cực tiểu tại $x = 1$ (y=0).
 
 \end{lythuyetbox}
 
@@ -100,6 +102,7 @@ Các điểm cực đại hay cực tiểu được gọi chung là các điểm
 
 \vspace{1.5em} % Tạo khoảng cách lớn hơn giữa hai ý
 
+% --- SỬA LỖI Ở ĐÂY ---
 \begin{banchat}{}{bc:cuc-tri}
 Để giải thích dễ hiểu hơn, ta có thể hình dung rằng điểm cực đại là điểm cao nhất trong một khoảng lân cận mà không phải là điểm đầu hay điểm cuối của khoảng. Tương tự với điểm cực tiểu.
 
@@ -209,10 +212,12 @@ Như vậy, đối với những trường hợp hàm $f(x)$ được phân tíc
 \noindent
 $\Rightarrow$ Từ đây, có thể dùng những phương pháp khác như lập bảng biến thiên để xét tính chất cực trị.
 
+% --- SỬA LỖI Ở ĐÂY ---
 \begin{chuy}{Tách nhân tử}{cy:cuc-tri-nhan-tu}
   Khi gặp những nhân tử có dạng kiểu $x^2 - n$ có thể tách tiếp thành $(x - \sqrt{n})(x + \sqrt{n})$.
 \end{chuy}
 
+% --- SỬA LỖI Ở ĐÂY ---
 \begin{banchat}{}{bc:cuc-tri-nhan-tu}
 \begin{itemize}
     \item Thứ nhất, ở đây ta đang xét các hàm đơn giản, đạo hàm xác định với mọi $x$. Do đó, cực trị chỉ có thể là nghiệm của phương trình đạo hàm $f'(x) = 0$ (loại trừ trường hợp cực trị tại điểm mà đạo hàm không xác định). Vì vậy, ta có thể loại bỏ các nhân tử vô nghiệm (không nhất thiết phải có dạng $x-x_n$; kể cả đa thức bậc 2, 3,... nếu chứng minh hoặc bấm máy thấy vô nghiệm thì cũng loại bỏ được).
@@ -230,7 +235,7 @@ $\Rightarrow$ Từ đây, có thể dùng những phương pháp khác như lậ
     ytick=\empty,
     domain=-3.12:3.5,
     samples=200,
-    title={$y = (x+3)(x-1)(x+1)^2(x-3)^2$}
+    title={$y' = (x+3)(x-1)(x+1)^2(x-3)^2$}
   ]
     % Đồ thị hàm số mới
     \addplot[blue, thick] {(x+3)*(x-1)*(x+1)^2*(x-3)^2};
@@ -298,23 +303,26 @@ $\Rightarrow$ Từ đây, có thể dùng những phương pháp khác như lậ
 \[
     y' = 0 \Leftrightarrow
     \left[\begin{array}{l}
-        x = 0 \\  x^2 = -\dfrac{b}{2a}
+        x = 0 \\  x^2 = -\dfrac{b}{2a} (2)
     \end{array}\right.
 \]
-\textbf{Các trường hợp:}
+\textbf{Các trường hợp (2):}
 
 \[
-\left.\begin{aligned}
-    &\text{TH1:}\quad b = 0 \Rightarrow x^2 = 0 \Rightarrow x = 0 \text{ là nghiệm bội ba (lẻ)} \\
-    &\text{TH2:}\quad -\dfrac{b}{2a} < 0 \Leftrightarrow ab > 0 \Rightarrow x^2 = -\dfrac{b}{2a} \text{ vô nghiệm}
-\end{aligned}\right\}
-\Rightarrow \textbf{0 là cực trị duy nhất}
+\begin{aligned}
+& \begin{rcases}
+    \begin{aligned}
+        &\text{TH1:}\quad -\dfrac{b}{2a} = 0 \Leftrightarrow b = 0 \Leftrightarrow ab = 0 \Rightarrow x^2 = 0 \\
+        &\qquad \Rightarrow x = 0 \text{ là nghiệm bội ba (lẻ)} \\[1em]
+        &\text{TH2:}\quad -\dfrac{b}{2a} < 0 \Leftrightarrow ab > 0 \\
+        &\qquad \Rightarrow x^2 = -\dfrac{b}{2a} \text{ vô nghiệm}
+    \end{aligned}
+\end{rcases}
+\Rightarrow \textbf{0 là cực trị duy nhất} \\
+\\ % Khoảng trống
+& \text{TH3:}\quad -\dfrac{b}{2a} > 0 \Leftrightarrow ab < 0 \Rightarrow x^2 = -\dfrac{b}{2a} \text{ có hai nghiệm phân biệt } x = \pm \sqrt{-\dfrac{b}{2a}}
+\end{aligned}
 \]
-
-\[
-\text{TH3:}\quad -\dfrac{b}{2a} > 0 \Leftrightarrow ab < 0 \Rightarrow x^2 = -\dfrac{b}{2a} \text{ có hai nghiệm phân biệt } x = \pm \sqrt{-\dfrac{b}{2a}}
-\]
-\qquad $\Rightarrow$ Hàm số có 3 cực trị
 
 \vspace{1.5em}
 \textbf{Kết luận:}
@@ -388,6 +396,7 @@ Với hàm số $y = f(x) = ax^4 + bx^2 + c$ (với $ab < 0$ để có 3 cực t
 \end{lythuyetbox}
 
 \section{Một số bài tập tiêu biểu}
+
 \begin{chuy}{Bài tập xét tính đơn điệu hàm phân thức bậc nhất/bậc nhất}{cy:bt-pt-bac-nhat}
 Xét hàm số $y = \frac{ax + b}{cx +d}$ đồng biến/nghịch biến trên khoảng K cần xét hai điều kiện
 \begin{itemize}
@@ -402,5 +411,5 @@ Xét hàm số $y = \frac{ax + b}{cx +d}$ đồng biến/nghịch biến trên k
 \end{cauhoi}
 
 \begin{loigiai}
-    \ref{cy:meo-bang-bien-thien} Ta có $f'(x) = 0$ khi $x = 0, -2, -4$ và $x^2 + 2(m+3)x + 6m + 18 = 0$.
+    Theo \ref{:cy:cuc-tri-nhan-tu}, cực trị của hàm số là các nghiệm bội lẻ của phương trình $f'(x) = 0$.
 \end{loigiai}

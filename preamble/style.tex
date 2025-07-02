@@ -14,7 +14,7 @@
 
 % ---- 2. Typography ----
 % Ensure you have installed "Source Serif 4" and "Inter" fonts
-\setmainfont{Source Serif 4}[      % <<< THIS LINE IS UPDATED
+\setmainfont{Source Serif 4}[
     UprightFont = *,
     BoldFont = * SemiBold,
     ItalicFont = * Italic,
@@ -69,7 +69,7 @@
   {\sffamily\Large\bfseries\color{myblue!90!black}} % Font for the entire title line
   {\color{myblue}\vrule width 2pt height 1.1em depth 0.2em\hspace{0.6em}\thesection} % The label
   {0.5em} % Horizontal space
-  {}      % <<< THE FIX IS HERE. This was "{#1}" and is now correctly empty.
+  {}
 \titlespacing*{\section}{0pt}{30pt}{15pt} % Adjust vertical spacing (left, before, after)
 
 % ---- 5. Table of Contents ----
@@ -113,25 +113,22 @@
 
 
 % --- PART 2: DEFINITIVE, STABLE ENVIRONMENTS ---
-% This is the final, correct solution. It uses the "titlerule=0pt" key to
-% reliably remove the dividing line, achieving the integrated title design.
+% This is the final, correct solution. The incorrect 'store aname' key has been removed.
+% The \newtcbtheorem command handles the label automatically.
 
 % --- Environment Definitions ---
+
+\makeatletter % Allow @ in command names
 
 \newtcbtheorem[auto counter, number within=chapter]{dinhnghia}{Định nghĩa}
   {
     enhanced, frame empty, sharp corners,
-    % Make the title and content backgrounds the same color
-    colback=myorange!10!white,
-    colbacktitle=myorange!10!white,
-    % Style the title text
+    colback=myorange!10!white, colbacktitle=myorange!10!white,
     coltitle=myorange!35!black, fonttitle=\sffamily\bfseries,
-    % CORRECT, STABLE KEY: Sets the thickness of the rule under the title to zero.
     titlerule=0pt,
-    % Standard options for layout
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
-    title={\icon{book}\hspace{0.5em}Định nghĩa~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
-    store aname={\kvtcb@label}
+    title={Định nghĩa~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
+    label=#2 % <<< FIX APPLIED
   }
   {}
 
@@ -142,8 +139,8 @@
     coltitle=myblue!35!black, fonttitle=\sffamily\bfseries,
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
-    title={\icon{landmark}\hspace{0.5em}Định lý~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
-    store aname={\kvtcb@label}
+    title={Định lý~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
+    label=#2 % <<< FIX APPLIED
   }
   {}
 
@@ -154,8 +151,8 @@
     coltitle=mygreen!35!black, fonttitle=\sffamily\bfseries,
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
-    title={\icon{pencil-alt}\hspace{0.5em}Ví dụ~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
-    store aname={\kvtcb@label}
+    title={Ví dụ~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
+    label=#2 % <<< FIX APPLIED
   }
   {}
 
@@ -166,8 +163,8 @@
     coltitle=mypurple!35!black, fonttitle=\sffamily\bfseries,
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
-    title={\icon{star}\hspace{0.5em}Bản chất~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
-    store aname={\kvtcb@label}
+    title={Bản chất~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
+    label=#2 % <<< FIX APPLIED
   }
   {}
 
@@ -178,10 +175,12 @@
     coltitle=myred!40!black, fonttitle=\sffamily\bfseries,
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
-    title={\icon{exclamation-triangle}\hspace{0.5em}Chú ý~\thetcbcounter\kvtcb@ifblank{#2}{}{ : #2}}
-    store aname={\kvtcb@label}
+    title={Chú ý~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
+    label=#2 % <<< FIX APPLIED
   }
   {}
+
+\makeatother % Disallow @ in command names
 
 
 % --- PART 3: The Exercise and Solution System (Modern & Simplistic) ---
@@ -193,7 +192,7 @@
 
 % \NewDocumentEnvironment requires the xparse package (already loaded in packages.tex)
 % This new 'cauhoi' environment has an optional title and a mandatory label.
-% Usage: \begin{cauhoi[Optional Title]{label-name} ... \end{cauhoi}
+% Usage: \begin{cauhoi}[Optional Title]{label-name} ... \end{cauhoi}
 \NewDocumentEnvironment{cauhoi}{ o m }{% o = Optional arg [in brackets], m = Mandatory arg {in braces}
     \refstepcounter{cauhoicounter}\label{#2}% Step and set the label for \ref
     \begin{tcolorbox}[

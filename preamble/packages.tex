@@ -3,10 +3,12 @@
 
 % ---- Core and Language ----
 \usepackage{fontspec}      % For loading modern fonts (requires XeLaTeX/LuaTeX)
+% \newfontfamily\faicons{Font Awesome 5 Free Solid} % Pre-load Font Awesome for robust icon usage
 \usepackage{polyglossia}   % Modern multilingual support
 
 % ---- Mathematics ----
 \usepackage{amsmath}
+\usepackage{mathtools} % Thêm dòng này để dùng rcases
 \usepackage{amssymb}
 \usepackage{tikz,pgfplots}
 \pgfplotsset{compat=1.18}
