@@ -1,6 +1,6 @@
 % chapter1.tex
-\chapter{Hàm số}
-\label{ch:intro}
+\chapter{Tính đơn điệu và cực trị của hàm số}
+\label{ch:chapter-1}
 
 \section{Tính đơn điệu của hàm số}
 
@@ -15,6 +15,10 @@ Hàm số $y = f(x)$ gọi là \textbf{đồng biến} trên khoảng $K$ nếu 
 \end{itemize}
 
 Tương tự với nghịch biến. Ngoài ra, hàm số có giá trị không đổi trên khoảng xác định, hay không phụ thuộc vào $x$ còn được gọi là hàm hằng.
+
+\begin{chuy}{Điểm tới hạn}{cy:diem-toi-han}
+    Điểm tới hạn là điểm mà tại đó đạo hàm của hàm số bằng 0 hoặc không xác định.
+\end{chuy}
 
 \end{lythuyetbox}
 
@@ -35,6 +39,50 @@ Tương tự với nghịch biến. Ngoài ra, hàm số có giá trị không �
     \item Bước 3: Tìm nghiệm của $y'$ hoặc các điểm mà $y'$ không tồn tại
     \item Bước 4: Sắp xếp chúng theo thứ tự tăng dần và xét dấu $y'$ ở giữa các khoảng
 \end{itemize}
+
+\end{lythuyetbox}
+
+% --- Phương pháp vẽ bảng biến thiên để xét tính đơn điệu ---
+
+% Sử dụng tkz-tab để bảng biến thiên đẹp và trực quan
+
+%\usepackage{tkz-tab} % Đảm bảo đã khai báo gói này ở preamble
+
+\begin{lythuyetbox}{Phương pháp vẽ bảng biến thiên để xét tính đơn điệu của hàm số}
+\textbf{Các bước thực hiện:}
+
+\begin{enumerate}
+    \item \textbf{Bước 1:} Xét điều kiện xác định của hàm số.
+    \item \textbf{Bước 2:} Tính đạo hàm $y'$.
+    \item \textbf{Bước 3:} Tìm các điểm tới hạn, gọi chung là các điểm $x_i$.
+    \item \textbf{Bước 4:} Sắp xếp các điểm $x_i$ theo thứ tự tăng dần và lập bảng biến thiên, xét dấu $y'$ trên từng khoảng.
+\end{enumerate}
+
+\begin{chuy}{Mẹo xét dấu}{cy:meo-bang-bien-thien}
+    Có thể dùng máy tính CASIO chức năng giải bất phương trình để xét dấu của đạo hàm một cách nhanh chóng.
+\end{chuy}
+
+\textbf{Ví dụ minh họa}
+
+Xét hàm số $y = x^3 - 3x + 2$.
+
+\begin{itemize}
+    \item Hàm xác định với mọi $x \in \mathbb{R}$.
+    \item Đạo hàm: $y' = 3x^2 - 3 = 3(x-1)(x+1)$.
+    \item $y' = 0 \Leftrightarrow x = -1$ hoặc $x = 1$ (hai điểm tới hạn).
+    \item Lập bảng biến thiên:
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+    %\tkzTabInit{<dòng 1>/<cao>, <dòng 2>/<cao>, ...}{<các mốc x>}
+    \tkzTabInit{$x$/1, $y'$/1, $y$/2}{$-\infty$, $-1$, $1$, $+\infty$}
+    \tkzTabLine{,+,z,-,z,+}
+    \tkzTabVar{+/ $+\infty$, -/ $2$, +/ $-2$, -/ $+\infty$}
+\end{tikzpicture}
+\end{center}
+
+\textbf{Kết luận:} Hàm số đồng biến trên $(-\infty, -1)$ và $(1, +\infty)$, nghịch biến trên $(-1, 1)$. Các điểm cực trị: cực đại tại $x = -1$, cực tiểu tại $x = 1$.
 
 \end{lythuyetbox}
 
@@ -95,8 +143,6 @@ Hơn nữa, tại điểm cực trị, đạo hàm của hàm số sẽ bằng 0
 \end{lythuyetbox}
 
 \begin{lythuyetbox}{Điều kiện để một điểm là cực trị}
-Điểm tới hạn là điểm mà tại đó đạo hàm của hàm số bằng 0 hoặc không xác định.
-
 \vspace{1em}
 \textbf{Các bước xét cực trị:}
 
@@ -291,24 +337,52 @@ Với hàm số $y = f(x) = ax^4 + bx^2 + c$ (với $ab < 0$ để có 3 cực t
     \item Ba điểm cực trị tạo thành các đỉnh của một tam giác cân trên mặt phẳng tọa độ.
 \end{itemize}
 
+% --- Hình minh họa tam giác cực trị cân ---
 \begin{center}
 \begin{tikzpicture}[scale=1.1]
   % Trục toạ độ
-  \draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$};
-  \draw[->] (0,-0.5) -- (0,3.2) node[above] {$y$};
-  % Các điểm cực trị minh hoạ với a=1, b=-2, c=0
+  \draw[->, thin] (-2.2,0) -- (2.2,0) node[right] {$x$};
+  \draw[->, thin] (0,-1.8) -- (0,1.8) node[above] {$y$};
+  % Ticks cho trục toạ độ
+  \foreach \x in {-2, -1, 1, 2}
+    \draw (\x, 0.07) -- (\x, -0.07) node[below, font=\scriptsize] {$\x$};
+  \foreach \y in {-1, 1}
+    \draw (0.07, \y) -- (-0.07, \y) node[left, font=\scriptsize] {$\y$};
+  % Các điểm cực trị minh hoạ với a=1, b=-2, c=1
   \coordinate (A) at (0, 1);
   \coordinate (B) at (1, -1);
   \coordinate (C) at (-1, -1);
   % Vẽ tam giác
   \draw[thick, blue] (A) -- (B) -- (C) -- cycle;
   % Đánh dấu các điểm
-  \filldraw[red] (A) circle (2pt) node[above right] {$A(0,\ c)$};
-  \filldraw[red] (B) circle (2pt) node[below right] {$B(x_2,\ y_2)$};
-  \filldraw[red] (C) circle (2pt) node[below left] {$C(x_3,\ y_3)$};
-  % Ghi chú
-  \node at (0,2.5) {\footnotesize Tam giác cân tại $A$};
+  \fill (A) circle (2pt) node[above right] {$A(0,\ 1)$};
+  \fill (B) circle (2pt) node[below right] {$B(1,\ -1)$};
+  \fill (C) circle (2pt) node[below left] {$C(-1,\ -1)$};
 \end{tikzpicture}
 \end{center}
+% --- Hết hình minh họa ---
 
+\end{lythuyetbox}
+
+% --- Đường thẳng đi qua hai cực trị ---
+\begin{lythuyetbox}{Đường thẳng đi qua hai cực trị}
+\textbf{1. Hàm phân thức dạng bậc hai/bậc một}
+
+\begin{itemize}
+    \item Phương trình đường thẳng đi qua hai cực trị của $y = \dfrac{ax^2+bx+c}{dx+e}$ có dạng:
+    \[
+        y = \frac{(ax^2+bx+c)'}{(dx+e)'}
+    \]
+\end{itemize}
+
+\textbf{2. Hàm bậc ba:} $y = ax^3 + bx^2 + cx + d$ ($a \neq 0$)
+
+\begin{itemize}
+    \item \textbf{Cách 1:} Tính cụ thể hai điểm cực trị, sau đó viết phương trình đường thẳng qua hai điểm đó.
+    \item \textbf{Cách 2:} Phương trình đường thẳng đi qua hai cực trị có thể viết nhanh dưới dạng:
+    \[
+        y = \text{dư của } \frac{f(x)}{f'(x)}
+    \]
+    (Tức là lấy phần dư khi chia $f(x)$ cho $f'(x)$)
+\end{itemize}
 \end{lythuyetbox}
