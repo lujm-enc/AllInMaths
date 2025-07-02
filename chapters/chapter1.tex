@@ -297,15 +297,15 @@ Với hàm số $y = f(x) = ax^4 + bx^2 + c$ (với $ab < 0$ để có 3 cực t
   \draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$};
   \draw[->] (0,-0.5) -- (0,3.2) node[above] {$y$};
   % Các điểm cực trị minh hoạ với a=1, b=-2, c=0
-  \coordinate (A) at (0, 0);
+  \coordinate (A) at (0, 1);
   \coordinate (B) at (1, -1);
   \coordinate (C) at (-1, -1);
   % Vẽ tam giác
   \draw[thick, blue] (A) -- (B) -- (C) -- cycle;
   % Đánh dấu các điểm
-  \filldraw[red] (A) circle (2pt) node[above right] {$A(0,\ 0)$};
-  \filldraw[red] (B) circle (2pt) node[below right] {$B(1,\ -1)$};
-  \filldraw[red] (C) circle (2pt) node[below left] {$C(-1,\ -1)$};
+  \filldraw[red] (A) circle (2pt) node[above right] {$A(0,\ c)$};
+  \filldraw[red] (B) circle (2pt) node[below right] {$B(x_2,\ y_2)$};
+  \filldraw[red] (C) circle (2pt) node[below left] {$C(x_3,\ y_3)$};
   % Ghi chú
   \node at (0,2.5) {\footnotesize Tam giác cân tại $A$};
 \end{tikzpicture}

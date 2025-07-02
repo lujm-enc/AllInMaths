@@ -4,7 +4,6 @@
 *.out
 *.toc
 *.synctex.gz
-*.pdf
 *.bbl
 *.blg
 *.fdb_latexmk
@@ -15,9 +14,6 @@
 *.dinhly
 *.dinhnghia
 *.py
-
-# Build directory
-build/
 
 # VS Code settings (optional, uncomment if you want to ignore)
 #.vscode/
