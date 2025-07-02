@@ -52,7 +52,7 @@ Các điểm cực đại hay cực tiểu được gọi chung là các điểm
 
 \vspace{1.5em} % Tạo khoảng cách lớn hơn giữa hai ý
 
-\begin{banchat}{}{hq:cuc-tri}
+\begin{banchat}{}{bc:cuc-tri}
 Để giải thích dễ hiểu hơn, ta có thể hình dung rằng điểm cực đại là điểm cao nhất trong một khoảng lân cận mà không phải là điểm đầu hay điểm cuối của khoảng. Tương tự với điểm cực tiểu.
 
 \vspace{1.5em}
@@ -63,51 +63,30 @@ Hệ quả là, trên đồ thị hàm số, điểm cực đại (hoặc cực 
 
 Hơn nữa, tại điểm cực trị, đạo hàm của hàm số sẽ bằng 0 hoặc không xác định, vì tại điểm này, độ dốc của đồ thị chuyển từ dương sang âm (hoặc ngược lại), dẫn đến việc không có sự thay đổi về độ cao trong một khoảng nhỏ xung quanh điểm đó.
 
-% --- Đồ thị minh họa cực đại và cực tiểu ---
-
-% Cần thêm vào preamble: \usepackage{tikz,pgfplots}
+% --- Đồ thị minh họa cực trị hàm số bậc ba ---
 \begin{center}
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[scale=0.9]
   \begin{axis} [
-    width=5cm, height=4cm,
+    width=12cm, height=6cm,
     axis lines=middle,
     xlabel={$x$}, ylabel={$y$},
     xtick=\empty, ytick=\empty,
-    domain=-2:2,
-    samples=100,
-    title={Cực đại}
+    domain=-2.4:2.4,
+    samples=200,
+    title={Cực đại và cực tiểu của hàm bậc ba}
   ]
-    % Đồ thị hàm số
-    \addplot[blue, thick] {-x^2 + 2};
-    % Đánh dấu điểm cực đại
-    \addplot[red, only marks, mark=*] coordinates {(0,2)};
-    % Tiếp tuyến tại cực đại (đạo hàm = 0)
-    \addplot[orange, thick, dashed, domain=-1:1] {2};
+    % Đồ thị hàm số bậc ba
+    \addplot[blue, thick] {x^3 - 3*x};
+    % Đánh dấu cực đại và cực tiểu
+    \addplot[red, only marks, mark=*] coordinates {(-1,2) (1,-2)};
+    % Tiếp tuyến tại cực trị
+    \addplot[orange, thick, dashed, domain=-2:-0.2] {2};
+    \addplot[orange, thick, dashed, domain=0.2:2] {-2};
     % Ghi chú
-    \node[above right, red] at (axis cs:0,2) {Cực đại};
-    \node[below right, orange] at (axis cs:0,2) {\footnotesize $y'=0$};
-  \end{axis}
-\end{tikzpicture}
-\hspace{2em}
-\begin{tikzpicture}[scale=0.8]
-  \begin{axis} [
-    width=5cm, height=4cm,
-    axis lines=middle,
-    xlabel={$x$}, ylabel={$y$},
-    xtick=\empty, ytick=\empty,
-    domain=-2:2,
-    samples=100,
-    title={Cực tiểu}
-  ]
-    % Đồ thị hàm số
-    \addplot[blue, thick] {x^2 - 2};
-    % Đánh dấu điểm cực tiểu
-    \addplot[red, only marks, mark=*] coordinates {(0,-2)};
-    % Tiếp tuyến tại cực tiểu (đạo hàm = 0)
-    \addplot[orange, thick, dashed, domain=-1:1] {-2};
-    % Ghi chú
-    \node[below right, red] at (axis cs:0,-2) {Cực tiểu};
-    \node[above right, orange] at (axis cs:0,-2) {\footnotesize $y'=0$};
+    \node[above right, red] at (axis cs:-1,2) {Cực đại};
+    \node[below right, red] at (axis cs:1,-2) {Cực tiểu};
+    \node[below right, orange] at (axis cs:-1,2) {\footnotesize $y'=0$};
+    \node[above right, orange] at (axis cs:1,-2) {\footnotesize $y'=0$};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -184,7 +163,11 @@ Như vậy, đối với những trường hợp hàm $f(x)$ được phân tíc
 \noindent
 $\Rightarrow$ Từ đây, có thể dùng những phương pháp khác như lập bảng biến thiên để xét tính chất cực trị.
 
-\begin{banchat}{}{hq:cuc-tri-nhan-tu}
+\begin{chuy}{Tách nhân tử}{cy:cuc-tri-nhan-tu}
+  Khi gặp những nhân tử có dạng kiểu $x^2 - n$ có thể tách tiếp thành $(x - \sqrt{n})(x + \sqrt{n})$.
+\end{chuy}
+
+\begin{banchat}{}{bc:cuc-tri-nhan-tu}
 \begin{itemize}
     \item Thứ nhất, ở đây ta đang xét các hàm đơn giản, đạo hàm xác định với mọi $x$. Do đó, cực trị chỉ có thể là nghiệm của phương trình đạo hàm $f'(x) = 0$ (loại trừ trường hợp cực trị tại điểm mà đạo hàm không xác định). Vì vậy, ta có thể loại bỏ các nhân tử vô nghiệm (không nhất thiết phải có dạng $x-x_n$; kể cả đa thức bậc 2, 3,... nếu chứng minh hoặc bấm máy thấy vô nghiệm thì cũng loại bỏ được).
     \item Thứ hai, đây là một kiến thức thú vị về đồ thị hàm số, tại các nghiệm kép (mũ chẵn), đồ thị chỉ tiếp xúc trục hoành mà không cắt qua. Điều này có nghĩa là trước và sau nghiệm đó, dấu của đạo hàm không thay đổi, nên đó không phải là cực trị. Ngược lại, tại các nghiệm lẻ (mũ lẻ), đồ thị đi qua trục hoành, dấu của đạo hàm đổi qua nghiệm đó, nên đó chính là cực trị.
@@ -218,27 +201,114 @@ $\Rightarrow$ Từ đây, có thể dùng những phương pháp khác như lậ
 \section{Một số hàm số thường gặp}
 \begin{lythuyetbox}{Hàm số bậc ba}
 
-% --- Lý thuyết về hàm số bậc ba ---
-Hàm số bậc ba có dạng:
-\[ y = ax^3 + bx^2 + cx + d \]
+  % --- Lý thuyết về hàm số bậc ba ---
+  Hàm số bậc ba có dạng:
+  \[ y = ax^3 + bx^2 + cx + d \]
+  Đạo hàm:
+  \[ y' = 3a x^2 + 2b x + c \]
+  Khi này, ta xét tam thức bậc hai
+  \begin{itemize}
+      \item $y' \geq 0,\ \forall x \in \mathbb{R} \Leftrightarrow \begin{cases} a > 0 \\ \Delta \leq 0 \end{cases}$
+      \item $y' \leq 0,\ \forall x \in \mathbb{R} \Leftrightarrow \begin{cases} a < 0 \\ \Delta \leq 0 \end{cases}$ 
+  \end{itemize}
+  Bổ sung: $y' \neq 0$ với mọi $x$ khi $\Delta \neq 0$ (vì nó có nghiệm)
+
+  \vspace{1.5em}
+  Cực trị:
+  \begin{itemize}
+      \item 2 cực trị $\Leftrightarrow \Delta > 0$ (có 2 nghiệm phân biệt)
+      \item Không có cực trị $\Leftrightarrow$
+      $\left\{\begin{array}{l}
+          \Delta < 0 \quad \text{(không có nghiệm)} \\
+          \Delta = 0 \quad \text{(có nghiệm kép)}
+      \end{array}\right.$
+  \end{itemize}
+
+\end{lythuyetbox}
+
+\begin{lythuyetbox}{Hàm phân thức bậc nhất/bậc nhất}
+  Hàm phân thức bậc nhất có dạng:
+  \[ y = \frac{ax + b}{cx + d} \qquad (x \neq -\frac{d}{c}) \]
+  Đạo hàm:
+  \[ y' = \frac{ad-bc}{(cx + d)^2} \]
+  Từ đây, với $ad - bc$ là hằng số, dễ dàng suy ra rằng:
+  \begin{itemize}
+      \item Nếu $ad - bc > 0$ thì $y' > 0$, hàm đồng biến trên khoảng xác định.
+      \item Nếu $ad - bc < 0$ thì $y' < 0$, hàm nghịch biến trên khoảng xác định.
+      \item Nếu $ad - bc = 0$ thì $y' = 0$, hàm không đổi trên khoảng xác định.
+  \end{itemize}
+
+\end{lythuyetbox}
+
+\begin{lythuyetbox}{Hàm trùng phương}
+  Hàm trùng phương có dạng:
+\[
+    y = ax^4 + bx^2 + c
+\]
 Đạo hàm:
-\[ y' = 3a x^2 + 2b x + c \]
-Khi này, ta xét tam thức bậc hai
-\begin{itemize}
-    \item $y' \geq 0,\ \forall x \in \mathbb{R} \Leftrightarrow \begin{cases} a > 0 \\ \Delta \leq 0 \end{cases}$
-    \item $y' \leq 0,\ \forall x \in \mathbb{R} \Leftrightarrow \begin{cases} a < 0 \\ \Delta \leq 0 \end{cases}$ 
-\end{itemize}
-Bổ sung: $y' \neq 0$ với mọi $x$ khi $\Delta \neq 0$ (vì nó có nghiệm)
+\[
+    y' = 4a x^3 + 2b x = 2x(2a x^2 + b)
+\]
+\[
+    y' = 0 \Leftrightarrow
+    \left[\begin{array}{l}
+        x = 0 \\  x^2 = -\dfrac{b}{2a}
+    \end{array}\right.
+\]
+\textbf{Các trường hợp:}
+
+\[
+\left.\begin{aligned}
+    &\text{TH1:}\quad b = 0 \Rightarrow x^2 = 0 \Rightarrow x = 0 \text{ là nghiệm bội ba (lẻ)} \\
+    &\text{TH2:}\quad -\dfrac{b}{2a} < 0 \Leftrightarrow ab > 0 \Rightarrow x^2 = -\dfrac{b}{2a} \text{ vô nghiệm}
+\end{aligned}\right\}
+\Rightarrow \textbf{0 là cực trị duy nhất}
+\]
+
+\[
+\text{TH3:}\quad -\dfrac{b}{2a} > 0 \Leftrightarrow ab < 0 \Rightarrow x^2 = -\dfrac{b}{2a} \text{ có hai nghiệm phân biệt } x = \pm \sqrt{-\dfrac{b}{2a}}
+\]
+\qquad $\Rightarrow$ Hàm số có 3 cực trị
 
 \vspace{1.5em}
-Cực trị:
+\textbf{Kết luận:}
 \begin{itemize}
-    \item 2 cực trị $\Leftrightarrow \Delta > 0$ (có 2 nghiệm phân biệt)
-    \item Không có cực trị $\Leftrightarrow$
-    $\left\{\begin{array}{l}
-        \Delta < 0 \quad \text{(không có nghiệm)} \\
-        \Delta = 0 \quad \text{(có nghiệm kép)}
-    \end{array}\right.$
+    \item Hàm trùng phương có 1 cực trị $\iff ab \geq 0$
+    \item Hàm trùng phương có 3 cực trị $\iff ab < 0$
+    \item Trong cả hai trường hợp đều có $x = 0$ là cực trị.
 \end{itemize}
+
+\textbf{Tính chất của 3 điểm cực trị:}
+
+Với hàm số $y = f(x) = ax^4 + bx^2 + c$ (với $ab < 0$ để có 3 cực trị), ta có:
+
+\begin{itemize}
+    \item Ba điểm cực trị là $x_1 = 0$, $x_2 = \sqrt{-\dfrac{b}{2a}}$, $x_3 = -\sqrt{-\dfrac{b}{2a}}$.
+    \item Giá trị hàm số tại hai điểm đối xứng:
+    \[
+        f\left(\sqrt{-\dfrac{b}{2a}}\right) = f\left(-\sqrt{-\dfrac{b}{2a}}\right)
+    \]
+    \item Ba điểm cực trị tạo thành các đỉnh của một tam giác cân trên mặt phẳng tọa độ.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Trục toạ độ
+  \draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,3.2) node[above] {$y$};
+  % Các điểm cực trị minh hoạ với a=1, b=-2, c=0
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at (1, -1);
+  \coordinate (C) at (-1, -1);
+  % Vẽ tam giác
+  \draw[thick, blue] (A) -- (B) -- (C) -- cycle;
+  % Đánh dấu các điểm
+  \filldraw[red] (A) circle (2pt) node[above right] {$A(0,\ 0)$};
+  \filldraw[red] (B) circle (2pt) node[below right] {$B(1,\ -1)$};
+  \filldraw[red] (C) circle (2pt) node[below left] {$C(-1,\ -1)$};
+  % Ghi chú
+  \node at (0,2.5) {\footnotesize Tam giác cân tại $A$};
+\end{tikzpicture}
+\end{center}
 
 \end{lythuyetbox}
