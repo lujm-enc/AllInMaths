@@ -70,7 +70,7 @@
   {\color{myblue}\vrule width 2pt height 1.1em depth 0.2em\hspace{0.6em}\thesection} % The label
   {0.5em} % Horizontal space
   {}
-\titlespacing*{\section}{0pt}{30pt}{15pt} % Adjust vertical spacing (left, before, after)
+\titlespacing*{\section}{0pt}{15pt}{30pt} % Adjust vertical spacing (left, before, after)
 
 % ---- 5. Table of Contents ----
 \titlecontents{chapter}[1.5em]
@@ -87,41 +87,47 @@
 
 % ---- 6. Modern Environments: A Definitive and Stable Architecture ----
 
-% --- PART 1: The Master "Theory" Box ---
-% A large, breakable half-box for theoretical content.
-\newtcolorbox{lythuyetbox}[1]{
+% --- PART 1 & 2: CONSOLIDATED DEFINITIVE ENVIRONMENTS ---
+% This is the final, correct solution. The 'lythuyetbox' is now a theorem-like
+% environment, allowing it to be numbered and referenced just like the others.
+% The incorrect 'store aname' key has been removed from all definitions.
+% The \newtcbtheorem command handles the label automatically.
+
+\makeatletter % Allow @ in command names
+
+% --- Environment Definitions ---
+
+% NEW: lythuyetbox is now a theorem, so it can be labeled and referenced.
+\newtcbtheorem[auto counter, number within=chapter]{lythuyetbox}{Lý thuyết}
+  {
+    % Styling from the original lythuyetbox
     breakable,
     enhanced,
     frame empty,
     colback=white,
-    fonttitle=\sffamily\bfseries\large, % Slightly bigger title
+    fonttitle=\sffamily\bfseries\large,
     coltitle=myblue,
     borderline north={1.5pt}{0pt}{myblue},
     borderline west={1.5pt}{0pt}{myblue},
     attach boxed title to top left={
-        xshift=0.5cm, % Tighter alignment
-        yshift=-0.7\baselineskip, % Slightly higher for better alignment
+        xshift=0.5cm,
+        yshift=-0.7\baselineskip,
     },
     boxed title style={
         frame empty,
-        colback=white, % Makes the title block opaque to hide the line behind it
+        colback=white,
     },
-    title=#1,
-    % Spacing for the content inside
+    % Spacing
     left=6mm, top=8mm, bottom=4mm, right=4mm,
-}
-
-
-% --- PART 2: DEFINITIVE, STABLE ENVIRONMENTS ---
-% This is the final, correct solution. The incorrect 'store aname' key has been removed.
-% The \newtcbtheorem command handles the label automatically.
-
-% --- Environment Definitions ---
-
-\makeatletter % Allow @ in command names
+    % Title and Labeling logic
+    title={Lý thuyết~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}}, % Adds "Lý thuyết 1.1: Title"
+    label=#2 % Handles the label for \ref
+  }
+  {}
 
 \newtcbtheorem[auto counter, number within=chapter]{dinhnghia}{Định nghĩa}
   {
+    breakable,
     enhanced, frame empty, sharp corners,
     colback=myorange!10!white, colbacktitle=myorange!10!white,
     coltitle=myorange!35!black, fonttitle=\sffamily\bfseries,
@@ -134,6 +140,7 @@
 
 \newtcbtheorem[auto counter, number within=chapter]{dinhly}{Định lý}
   {
+    breakable,
     enhanced, frame empty, sharp corners,
     colback=myblue!10!white, colbacktitle=myblue!10!white,
     coltitle=myblue!35!black, fonttitle=\sffamily\bfseries,
@@ -146,6 +153,7 @@
 
 \newtcbtheorem[auto counter, number within=chapter]{vidu}{Ví dụ}
   {
+    breakable,
     enhanced, frame empty, sharp corners,
     colback=mygreen!10!white, colbacktitle=mygreen!10!white,
     coltitle=mygreen!35!black, fonttitle=\sffamily\bfseries,
@@ -158,6 +166,7 @@
 
 \newtcbtheorem[auto counter, number within=chapter]{banchat}{Bản chất}
   {
+    breakable,
     enhanced, frame empty, sharp corners,
     colback=mypurple!10!white, colbacktitle=mypurple!10!white,
     coltitle=mypurple!35!black, fonttitle=\sffamily\bfseries,
@@ -170,6 +179,7 @@
 
 \newtcbtheorem[auto counter, number within=chapter]{chuy}{Chú ý}
   {
+    breakable,
     enhanced, frame empty, sharp corners,
     colback=myred!15!white, colbacktitle=myred!15!white,
     coltitle=myred!40!black, fonttitle=\sffamily\bfseries,
@@ -196,6 +206,7 @@
 \NewDocumentEnvironment{cauhoi}{ o m }{% o = Optional arg [in brackets], m = Mandatory arg {in braces}
     \refstepcounter{cauhoicounter}\label{#2}% Step and set the label for \ref
     \begin{tcolorbox}[
+        breakable,
         enhanced, colback=white, colframe=darkgray, boxrule=0.5pt, sharp corners
     ]
     \sffamily\bfseries\color{darkgray}% Styling for the title line
@@ -212,6 +223,7 @@
 % This new 'loigiai' environment is a simple, borderless block.
 \NewDocumentEnvironment{loigiai}{}{% No arguments needed
     \begin{tcolorbox}[
+        breakable,
         enhanced, frame empty, % No border
         colback=mygray,      % Light gray background
         sharp corners,
