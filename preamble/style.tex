@@ -90,7 +90,6 @@
 % --- PART 1 & 2: CONSOLIDATED DEFINITIVE ENVIRONMENTS ---
 % This is the final, correct solution. The 'lythuyetbox' is now a theorem-like
 % environment, allowing it to be numbered and referenced just like the others.
-% The incorrect 'store aname' key has been removed from all definitions.
 % The \newtcbtheorem command handles the label automatically.
 
 \makeatletter % Allow @ in command names
@@ -134,7 +133,7 @@
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
     title={Định nghĩa~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
-    label=#2 % <<< FIX APPLIED
+    label=#2
   }
   {}
 
@@ -147,7 +146,7 @@
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
     title={Định lý~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
-    label=#2 % <<< FIX APPLIED
+    label=#2
   }
   {}
 
@@ -160,7 +159,7 @@
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
     title={Ví dụ~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
-    label=#2 % <<< FIX APPLIED
+    label=#2
   }
   {}
 
@@ -173,7 +172,7 @@
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
     title={Bản chất~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
-    label=#2 % <<< FIX APPLIED
+    label=#2
   }
   {}
 
@@ -186,7 +185,7 @@
     titlerule=0pt,
     boxsep=1.5mm, left=5mm, right=5mm, top=3mm, bottom=3mm,
     title={Chú ý~\thetcbcounter\kvtcb@ifblank{#1}{}{ : #1}},
-    label=#2 % <<< FIX APPLIED
+    label=#2
   }
   {}
 

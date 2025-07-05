@@ -14,7 +14,7 @@ Hàm số $y = f(x)$ gọi là \textbf{đồng biến} trên khoảng $K$ nếu 
     \item \textbf{Điều kiện đủ:} $f'(x) > 0,\ \forall x \in K$
 \end{itemize}
 
-Tương tự với nghịch biến. Ngoài ra, hàm số có giá trị không đổi trên khoảng xác định, hay không phụ thuộc vào $x$ còn được gọi là hàm hằng.
+Tương tự với nghịch biến. Ngoài ra, hàm số có giá trị không đổi, không phụ thuộc vào $x$, hoặc có đạo hàm bằng 0 trên khoảng xác định, còn được gọi là hàm hằng.
 
 % --- SỬA LỖI Ở ĐÂY ---
 \begin{chuy}{Điểm tới hạn}{cy:diem-toi-han}
@@ -43,64 +43,6 @@ Tương tự với nghịch biến. Ngoài ra, hàm số có giá trị không �
 
 \end{lythuyetbox}
 
-% --- Phương pháp vẽ bảng biến thiên để xét tính đơn điệu ---
-
-% Sử dụng tkz-tab để bảng biến thiên đẹp và trực quan
-
-%\usepackage{tkz-tab} % Đảm bảo đã khai báo gói này ở preamble
-
-\begin{lythuyetbox}{Phương pháp vẽ bảng biến thiên để xét tính đơn điệu của hàm số}{lt:pp-bbt}
-\textbf{Các bước thực hiện:}
-
-\begin{enumerate}
-    \item \textbf{Bước 1:} Xét điều kiện xác định của hàm số.
-    \item \textbf{Bước 2:} Tính đạo hàm $y'$.
-    \item \textbf{Bước 3:} Tìm các điểm tới hạn, gọi chung là các điểm $x_i$.
-    \item \textbf{Bước 4:} Sắp xếp các điểm $x_i$ theo thứ tự tăng dần và lập bảng biến thiên, xét dấu $y'$ trên từng khoảng.
-\end{enumerate}
-
-% --- SỬA LỖI Ở ĐÂY ---
-\begin{chuy}{Mẹo xét dấu}{cy:meo-bang-bien-thien}
-    Có thể dùng máy tính CASIO chức năng giải bất phương trình để xét dấu của đạo hàm một cách nhanh chóng.
-\end{chuy}
-
-\textbf{Ví dụ minh họa}
-
-Xét hàm số $y = x^3 - 3x + 2$.
-
-\begin{itemize}
-    \item Hàm xác định với mọi $x \in \mathbb{R}$.
-    \item Đạo hàm: $y' = 3x^2 - 3 = 3(x-1)(x+1)$.
-    \item $y' = 0 \Leftrightarrow x = -1$ hoặc $x = 1$ (hai điểm tới hạn).
-    \item Lập bảng biến thiên:
-\end{itemize}
-
-\begin{center}
-\begin{tikzpicture}
-    %\tkzTabInit{<dòng 1>/<cao>, <dòng 2>/<cao>, ...}{<các mốc x>}
-    \tkzTabInit{$x$/1, $y'$/1, $y$/2}{$-\infty$, $-1$, $1$, $+\infty$}
-    \tkzTabLine{,+,z,-,z,+}
-    \tkzTabVar{+/ $+\infty$, -/ $4$, +/ $0$, -/ $+\infty$} % Sửa giá trị y tại cực trị cho đúng
-\end{tikzpicture}
-\end{center}
-
-\textbf{Kết luận:} Hàm số đồng biến trên $(-\infty, -1)$ và $(1, +\infty)$, nghịch biến trên $(-1, 1)$. Các điểm cực trị: cực đại tại $x = -1$ (y=4), cực tiểu tại $x = 1$ (y=0).
-
-\end{lythuyetbox}
-
-\begin{lythuyetbox}{Phương pháp sử dụng bất đẳng thức để xét dấu đạo hàm}{lt:pp-bdt}
-    Một số bất đẳng thức thường dùng:
-    
-    \textbf{Bất đẳng thức Bunhiacopxki (Cauchy–Schwarz):}
-    
-    Với mọi số thực $a_1, a_2, \ldots, a_n$ và $b_1, b_2, \ldots, b_n$, ta luôn có:
-    \[
-    (a_1^2 + a_2^2 + \cdots + a_n^2)(b_1^2 + b_2^2 + \cdots + b_n^2) \geq (a_1b_1 + a_2b_2 + \cdots + a_nb_n)^2
-    \]
-    Dấu "=" xảy ra khi và chỉ khi các vector $(a_1, a_2, ..., a_n)$ và $(b_1, b_2, ..., b_n)$ tỉ lệ với nhau.
-    
-\end{lythuyetbox}
-
 \section{Cực trị hàm số}
 
 \begin{lythuyetbox}{Lý thuyết về cực trị hàm số}{lt:cuc-tri}
@@ -113,9 +55,6 @@ Nếu $\exists (a;b)$ chứa $x_0$ và $(a;b) \subset K$ sao cho $f(x) < f(x_0)$
 \end{itemize}
 Các điểm cực đại hay cực tiểu được gọi chung là các điểm cực trị. Các giá trị cực đại hay cực tiểu được gọi chung là các (giá trị) cực trị của hàm số.
 
-\vspace{1.5em} % Tạo khoảng cách lớn hơn giữa hai ý
-
-% --- SỬA LỖI Ở ĐÂY ---
 \begin{banchat}{}{bc:cuc-tri}
 Để giải thích dễ hiểu hơn, ta có thể hình dung rằng điểm cực đại là điểm cao nhất trong một khoảng lân cận mà không phải là điểm đầu hay điểm cuối của khoảng. Tương tự với điểm cực tiểu.
 
@@ -453,7 +392,7 @@ Xét hàm số $y = \frac{ax + b}{cx +d}$ đồng biến/nghịch biến trên k
 \end{cauhoi}
 
 \begin{loigiai}
-    Ở đây, chúng ta sử dụng phương pháp bất đẳng thức \ref{:lt:pp-bdt}.
+    Ở đây, chúng ta sử dụng phương pháp bất đẳng thức \ref{:mth:bdt-bunhiacopxki}.
     Ta có: $y' = \cos x - \sin x - \sqrt{3}$.
     Sử dụng bất đẳng thức Bunhiacopxki, ta chứng minh được $\forall x \in \mathbb{R}$, có:
     \[
@@ -525,6 +464,6 @@ Xét hàm số $y = \frac{ax + b}{cx +d}$ đồng biến/nghịch biến trên k
 \end{cauhoi}
 
 \begin{loigiai}
-    Để làm được bài này, chúng ta cần nắm rõ lý thuyết /ref{:lt:tim-cuc-tri}.
+    Để làm được bài này, chúng ta cần nắm rõ lý thuyết \ref{:lt:tim-cuc-tri}.
 
 \end{loigiai}
